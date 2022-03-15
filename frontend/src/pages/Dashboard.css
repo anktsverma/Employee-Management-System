@@ -1,0 +1,20 @@
+.Dashboard{
+    width:80%;
+    margin: 0 auto;
+}
+.Dashboard-table{
+    width: 100%;
+}
+.Dashboard-table th{
+    background-color: #333;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+}
+.Dashboard-table td{
+    text-align: center;
+    padding: 10px 10px;
+}
+.Dashboard-table tr:nth-child(even){
+    background-color: lightgray;
+}
