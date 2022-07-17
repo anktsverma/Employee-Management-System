@@ -1,4 +1,4 @@
-import './Login.css'
+
 import {useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ const Register = () => {
       e.preventDefault();
       setRegisteredSuccessfully(false);
       setRegisterErr(false);
-      const registerResponse=await axios.post("http://localhost:5000/register",register);
+      const registerResponse=await axios.post("/register",register);
       console.log(registerResponse.data)
       if(registerResponse.data.messege){
         setRegisteredSuccessfully(registerResponse.data.messege);

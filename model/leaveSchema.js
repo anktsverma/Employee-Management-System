@@ -1,7 +1,7 @@
-const mongoose=require('mongoose');
+const mongoose=require('mongoose')
 
-const employeeSchema=new mongoose.Schema({
-    employeeid:{
+const leaveSchema=new mongoose.Schema({
+    employee_id:{
         type:String,
         required:true
     },
@@ -9,29 +9,28 @@ const employeeSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    email:{
+    start_date:{
         type:String,
         required:true
     },
-    username:{
+    end_date:{
         type:String,
         required:true
     },
-    phone:{
+    reason:{
         type:String,
         required:true
     },
-    dept:{
+    status:{
         type:String,
         required:true
     },
-    imgurl:{
+    message:{
         type:String,
         required:true
-    },
+    }
 
 })
 
-
-const Employee=mongoose.model('EMPLOYEE',employeeSchema);
-module.exports=Employee;
+const Leave=mongoose.model("LEAVE",leaveSchema)
+module.exports=Leave
