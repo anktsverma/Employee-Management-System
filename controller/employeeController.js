@@ -40,7 +40,7 @@ exports.loginEmployee=async(req,res)=>{
        if(await bcrypt.compare(req.body.password,employee[0].password)){
           let token=jwt.sign({id:employee[0]._id,email:employee[0].email,employee_id:employee[0].employee_id},process.env.SECRET_KEY)
 
-          employee=await Employee.find({email:req.body.email})
+        //   employee=await Employee.find({email:req.body.email})
           
         //   res.cookie("jwt",token,{
         //     httpOnly:false,
