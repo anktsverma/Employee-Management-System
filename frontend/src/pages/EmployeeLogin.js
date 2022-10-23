@@ -1,6 +1,6 @@
 import './Home.css'
 import {Link,useNavigate} from 'react-router-dom'
-import { useState ,useEffect } from 'react';
+import { useState } from 'react';
 
 import axios from 'axios';
 
@@ -11,18 +11,29 @@ const Home = () => {
     
     const EmployeeInputHandler=(e)=> setEmployeeData({...employeeData,[e.target.name]:e.target.value})
     const LoginEmployee=async()=>{
-        if(!employeeData.email || !employeeData.password){
-            alert('Username or password cannot be blank');
-        }
-        else{
-            const result=await axios.post("/loginEmployee",{email:employeeData.email,password:employeeData.password});
-            localStorage.setItem("id",result.data.employee[0]._id)
-            localStorage.setItem("token",result.data.token)
-            if(result.data.success) {
-                axios.defaults.headers.common['authorization']=`Bearer ${result.data.token}`
-                navigate("/employee_dashboard")
+        try{
+            if(!employeeData.email || !employeeData.password){
+                alert('Username or password cannot be blank');
+            }
+            else{
+                const result=await axios.post("/loginEmployee",{email:employeeData.email,password:employeeData.password});
+                localStorage.setItem("id",result.data.employee[0]._id)
+                localStorage.setItem("token",result.data.token)
+                if(result.data.success) {
+                    axios.defaults.headers.common['authorization']=`Bearer ${result.data.token}`
+                    navigate("/employee_dashboard")
+                }
             }
         }
+        catch(err){
+             if(err.response.status===400){
+                 alert(err.response.data.message) 
+             }
+             else{
+                console.log(err.response.message)
+             }
+        }
+
     }
 
 
